@@ -5,7 +5,7 @@ from typing import Tuple, Union
 from .types import Direction
 
 
-class LatLongParser:
+class LatLongStringParser:
     '''
     Parses string input of coordinates in various formats into lat and long parts.
     '''

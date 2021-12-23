@@ -21,6 +21,6 @@ tests = [
 
 for i, test in enumerate(tests):
     coor_str, target = test
-    coordinates = Coordinates()
+    coordinates = Coordinates(coor_str)
     coordinates.from_str(coor_str)
     print(f"Case {i}: {coordinates}")

@@ -1,6 +1,6 @@
 # Lat-long
 
-A Latitude-Longitude coodinates library.
+A Latitude-Longitude coordinates library.
 
 ### Install
 
@@ -8,23 +8,69 @@ A Latitude-Longitude coodinates library.
 pip install git+https://github.com/oscarychen/lat-long.git
 ```
 
-### Usage
+### Quick start
+
+#### Instantiating a Coordinates object
 
 ```python
 from lat_long.coordinates import Coordinates
-coordinatesA = Coordinates()
-coordinatesB = Coordinates()
-coordinatesC = Coordinates()
-coordinatesA.from_str("-51.07243737494296,-179.13425063752352")
-coordinatesB.from_str("51°04'20.8\"N114°08'03.3\"W")
-coordinatesC.from_dms(lat_degree=51, lat_minute=5, lat_second=0, south_north='N',
-                 long_degree=114, long_minute=8, long_second=5.5, east_west='E')
-print(coordinatesA)
-print(coordinatesB)
-print(coordinatesC)
+```
+
+Create coordinates by specifying DMS components:
+
+```python
+coor = Coordinates(lat_degree=37, lat_minute=14, lat_second=35.16, south_north='N',
+                 long_degree=115, long_minute=47, long_second=34.8, east_west='E')
+```
+
+Create coordinates by specifying decimals:
+
+```python
+coor = Coordinates(lat=37.2431, long=115.7930)
+```
+
+Create coordinates by parsing a string description of decimals:
+
+```python
+coor = Coordinates("37.2431, 115.793")
+```
+
+Create coordinates by parsing a string description of DMS:
+
+```python
+coor = Coordinates("37°14'35.16\"N 115°47'34.8\"E")
+```
+
+#### Usage
+
+Get DMS representation:
+
+```python
+coor.to_dms()
+# 37°14'35.16"N 115°47'34.8"E
+```
+
+Get decimal representation:
+
+```python
+coor.to_decimals()
+# 37.2431, 115.793
+```
+
+Check equality:
+
+```python
+coor1 = Coordinates(lat=37.2431, long=115.7930)
+coor2 = Coordinates("37°14'35.16\"N 115°47'34.8\"E")
+print(coor1 == coor2)
+# True
 ```
 
 ### To-do
 
 - Calculate distance between two coordinates
 - Add tests
+
+```
+
+```
